@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { FcLike, FcDislike } from 'react-icons/fc';
 import { RiArrowGoBackFill } from 'react-icons/ri';
+import { FiTrash } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import { Container, Content, Title, User, Lista, Back } from './styles';
@@ -46,6 +47,13 @@ const Employees: React.FC = () => {
                     <p>
                       {employee.department} | {employee.occupation}
                     </p>
+                    <button
+                      onClick={() => {
+                        api.delete(`/employees/${employee.id}`);
+                      }}
+                    >
+                      <FiTrash size={30} />
+                    </button>
 
                     <div>
                       <button
